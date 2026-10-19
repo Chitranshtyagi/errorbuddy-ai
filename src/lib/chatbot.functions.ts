@@ -72,8 +72,8 @@ export const askCodeGuru = createServerFn({ method: "POST" })
     const clean = messages
       .filter((m) => (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
       .slice(-20);
-    if (!clean.length || clean[clean.length - 1].role !== "user" || !clean[clean.length - 1].content.trim())
-      throw new Error("Please type a question first.");
+    const last = clean.at(-1);
+    if (!last || last.role !== "user" || !last.content.trim()) throw new Error("Please type a question first.");
     if (clean.some((m) => m.content.length > 4000)) throw new Error("Message is too long (max 4,000 characters).");
     return { messages: clean };
   })
