@@ -148,6 +148,7 @@ function Index() {
           )}
         </section>
       </main>
+      <CodeGuruChat />
     </div>
   );
 }
