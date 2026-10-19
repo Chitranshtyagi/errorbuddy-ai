@@ -131,4 +131,14 @@
   .accent-bar-yellow { border-left: 3px solid var(--warning); }
   .caret { display: inline-block; width: .5rem; height: 1rem; margin-left: .25rem; vertical-align: middle; background: var(--primary); animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
+  .typing-dot { width: .4rem; height: .4rem; border-radius: 9999px; background: var(--muted-foreground); animation: typing 1s infinite; }
+  @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .chat-md p { margin-bottom: .5rem; }
+  .chat-md p:last-child { margin-bottom: 0; }
+  .chat-md strong { color: var(--foreground); }
+  .chat-md code { font-family: var(--font-mono); font-size: .8em; background: var(--code-bg); border-radius: .25rem; padding: .1rem .3rem; }
+  .chat-md pre { background: var(--code-bg); border-radius: var(--radius-md); padding: .6rem .75rem; margin: .5rem 0; overflow-x: auto; }
+  .chat-md pre code { background: transparent; padding: 0; font-size: .75rem; }
+  .chat-md ul, .chat-md ol { margin: .25rem 0 .5rem 1.1rem; list-style: disc; }
+  .chat-md ol { list-style: decimal; }
 }

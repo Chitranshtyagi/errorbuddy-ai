@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
+import { CodeGuruChat } from "@/components/CodeGuruChat";
 import { explainError, type Explanation } from "@/lib/explain.functions";
 
 export const Route = createFileRoute("/")({
@@ -147,6 +148,7 @@ function Index() {
           )}
         </section>
       </main>
+      <CodeGuruChat />
     </div>
   );
 }
