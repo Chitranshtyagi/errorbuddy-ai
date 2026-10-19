@@ -1,5 +1,6 @@
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { askCodeGuru, type ChatMessage } from "@/lib/chatbot.functions";
 
 export function CodeGuruChat() {
@@ -72,7 +73,13 @@ export function CodeGuruChat() {
                     : "mr-8 self-start rounded-lg rounded-bl-sm bg-secondary px-3 py-2 text-sm text-secondary-foreground"
                 }
               >
-                <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>
+                {m.role === "user" ? (
+                  <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>
+                ) : (
+                  <div className="chat-md leading-relaxed">
+                    <ReactMarkdown>{m.content}</ReactMarkdown>
+                  </div>
+                )}
               </div>
             ))}
             {loading && (
