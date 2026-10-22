@@ -9,7 +9,7 @@ export function CodeGuruChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content: "Namaste! 🙏 I'm Code Guru. Ask me any coding doubt — C, C++, Python, Java — main simple words mein samjha dunga.",
+      content: "Yo! 🙏 Code Guru here. Koi bhi coding doubt ho — C, C++, Python, Java — pooch lo, main simple words mein samjha dunga. No judgement, only vibes. ⚡",
     },
   ]);
   const [input, setInput] = useState("");
@@ -43,12 +43,12 @@ export function CodeGuruChat() {
   return (
     <>
       {open && (
-        <div className="glass-panel fixed bottom-24 right-6 z-50 flex h-[480px] w-[360px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden">
+        <div className="glass-panel fixed bottom-24 right-6 z-50 flex h-[480px] w-[360px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden border-neon-cyan/30 shadow-[0_0_30px_-8px_var(--neon-cyan)]">
           <div className="flex items-center justify-between border-b border-border/60 px-4 py-3">
             <div className="flex items-center gap-2">
               <span className="text-lg">🧙‍♂️</span>
               <div>
-                <p className="font-mono text-sm font-bold text-foreground">Code Guru</p>
+                <p className="pixel text-[10px] neon-cyan">Code Guru</p>
                 <p className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
                   <span className="online-dot" style={{ width: ".4rem", height: ".4rem" }} /> your coding mentor
                 </p>
@@ -69,7 +69,7 @@ export function CodeGuruChat() {
                 key={i}
                 className={
                   m.role === "user"
-                    ? "ml-8 self-end rounded-lg rounded-br-sm bg-primary px-3 py-2 text-sm text-primary-foreground"
+                    ? "ml-8 self-end rounded-lg rounded-br-sm bg-neon-pink/85 px-3 py-2 text-sm text-primary-foreground shadow-[0_0_14px_-4px_var(--neon-pink)]"
                     : "mr-8 self-start rounded-lg rounded-bl-sm bg-secondary px-3 py-2 text-sm text-secondary-foreground"
                 }
               >
@@ -103,7 +103,7 @@ export function CodeGuruChat() {
               onClick={send}
               disabled={loading || !input.trim()}
               aria-label="Send message"
-              className="btn-glow rounded-md px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+              className="btn-neon rounded-md px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
             >
               ➤
             </button>
@@ -114,7 +114,7 @@ export function CodeGuruChat() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close Code Guru chat" : "Open Code Guru chat"}
-        className="btn-glow fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full text-2xl"
+        className="btn-neon fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full text-2xl"
       >
         {open ? "✕" : "🧙‍♂️"}
       </button>

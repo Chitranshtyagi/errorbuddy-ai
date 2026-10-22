@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * ErrorBuddy ⚡ — Cyberpunk Gen-Z design system.
+ * Neon pink #FF007F, electric green #00FF66, cyan #00E5FF on a deep dark base.
+ * Pixel display font (Press Start 2P) + Space Grotesk body + JetBrains Mono code.
  */
 
 @theme inline {
@@ -45,8 +37,12 @@
   --color-border: var(--border);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-green: var(--neon-green);
+  --color-neon-cyan: var(--neon-cyan);
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-pixel: "Press Start 2P", monospace;
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
@@ -67,30 +63,33 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.2 0.005 260);
-  --foreground: oklch(0.9 0.005 260);
-  --card: oklch(0.24 0.006 260);
-  --card-foreground: oklch(0.9 0.005 260);
-  --popover: oklch(0.24 0.006 260);
-  --popover-foreground: oklch(0.9 0.005 260);
-  --primary: oklch(0.62 0.15 245);
+  --background: oklch(0.12 0.02 310);
+  --foreground: oklch(0.92 0.01 300);
+  --card: oklch(0.17 0.025 310);
+  --card-foreground: oklch(0.92 0.01 300);
+  --popover: oklch(0.17 0.025 310);
+  --popover-foreground: oklch(0.92 0.01 300);
+  --neon-pink: oklch(0.65 0.29 350);
+  --neon-green: oklch(0.87 0.29 150);
+  --neon-cyan: oklch(0.86 0.16 210);
+  --primary: var(--neon-pink);
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.28 0.008 260);
-  --secondary-foreground: oklch(0.9 0.005 260);
-  --muted: oklch(0.28 0.008 260);
-  --muted-foreground: oklch(0.72 0.01 260);
-  --accent: oklch(0.3 0.01 260);
+  --secondary: oklch(0.21 0.03 310);
+  --secondary-foreground: oklch(0.92 0.01 300);
+  --muted: oklch(0.21 0.03 310);
+  --muted-foreground: oklch(0.7 0.02 300);
+  --accent: oklch(0.24 0.04 310);
   --accent-foreground: oklch(0.95 0 0);
-  --destructive: oklch(0.65 0.2 25);
+  --destructive: oklch(0.65 0.25 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --success: oklch(0.72 0.17 150);
-  --warning: oklch(0.82 0.15 85);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.62 0.15 245);
-  --code-bg: oklch(0.16 0.005 260 / 85%);
-  --chart-1: oklch(0.62 0.15 245); --chart-2: oklch(0.72 0.17 150); --chart-3: oklch(0.82 0.15 85); --chart-4: oklch(0.65 0.2 25); --chart-5: oklch(0.7 0.1 300);
-  --sidebar: oklch(0.22 0.005 260); --sidebar-foreground: oklch(0.9 0.005 260); --sidebar-primary: oklch(0.62 0.15 245); --sidebar-primary-foreground: oklch(0.98 0 0); --sidebar-accent: oklch(0.3 0.01 260); --sidebar-accent-foreground: oklch(0.95 0 0); --sidebar-border: oklch(1 0 0 / 10%); --sidebar-ring: oklch(0.62 0.15 245);
+  --success: var(--neon-green);
+  --warning: oklch(0.85 0.17 90);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--neon-cyan);
+  --code-bg: oklch(0.09 0.015 310 / 90%);
+  --chart-1: var(--neon-pink); --chart-2: var(--neon-green); --chart-3: var(--neon-cyan); --chart-4: oklch(0.85 0.17 90); --chart-5: oklch(0.7 0.15 300);
+  --sidebar: oklch(0.15 0.02 310); --sidebar-foreground: oklch(0.92 0.01 300); --sidebar-primary: var(--neon-pink); --sidebar-primary-foreground: oklch(0.98 0 0); --sidebar-accent: oklch(0.24 0.04 310); --sidebar-accent-foreground: oklch(0.95 0 0); --sidebar-border: oklch(1 0 0 / 12%); --sidebar-ring: var(--neon-cyan);
 }
 
 @layer base {
@@ -106,33 +105,105 @@
 
 @layer components {
   body { font-family: var(--font-sans); }
-  .bg-grid {
+
+  .bg-cyber {
     background:
-      radial-gradient(circle at 15% 0%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 45%),
-      radial-gradient(circle at 90% 100%, color-mix(in oklab, var(--success) 10%, transparent), transparent 40%),
+      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--neon-pink) 16%, transparent), transparent 45%),
+      radial-gradient(circle at 95% 20%, color-mix(in oklab, var(--neon-cyan) 12%, transparent), transparent 40%),
+      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--neon-green) 8%, transparent), transparent 45%),
       var(--background);
+    position: relative;
   }
+  .bg-cyber::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--neon-cyan) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--neon-cyan) 5%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+  }
+  .bg-cyber::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent 0 2px, oklch(0 0 0 / 12%) 2px 4px);
+    opacity: 0.35;
+  }
+
   .glass { background: color-mix(in oklab, var(--card) 60%, transparent); backdrop-filter: blur(14px); }
   .glass-panel {
     border-radius: var(--radius-xl);
     border: 1px solid var(--border);
     background: color-mix(in oklab, var(--card) 55%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 10px 40px -15px oklch(0 0 0 / 60%);
+    box-shadow: 0 10px 40px -15px oklch(0 0 0 / 70%);
   }
+
+  .pixel { font-family: var(--font-pixel); letter-spacing: 0.02em; }
+  .neon-pink { color: var(--neon-pink); text-shadow: 0 0 12px color-mix(in oklab, var(--neon-pink) 70%, transparent); }
+  .neon-green { color: var(--neon-green); text-shadow: 0 0 12px color-mix(in oklab, var(--neon-green) 70%, transparent); }
+  .neon-cyan { color: var(--neon-cyan); text-shadow: 0 0 12px color-mix(in oklab, var(--neon-cyan) 70%, transparent); }
+
   .code-area { background: var(--code-bg); }
-  .online-dot { width: .55rem; height: .55rem; border-radius: 9999px; background: var(--success); box-shadow: 0 0 10px var(--success); animation: pulse 2s infinite; }
-  .btn-glow { background: var(--primary); color: var(--primary-foreground); box-shadow: 0 8px 30px -8px var(--primary); transition: transform .15s, box-shadow .15s; }
-  .btn-glow:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 12px 36px -8px var(--primary); }
-  .chip { border: 1px solid var(--border); background: var(--secondary); color: var(--secondary-foreground); border-radius: var(--radius-md); padding: .4rem .75rem; font-family: var(--font-mono); font-size: .75rem; transition: border-color .15s, color .15s; }
-  .chip:hover { border-color: var(--primary); color: var(--primary); }
-  .accent-bar-red { border-left: 3px solid var(--destructive); }
-  .accent-bar-green { border-left: 3px solid var(--success); }
-  .accent-bar-yellow { border-left: 3px solid var(--warning); }
-  .caret { display: inline-block; width: .5rem; height: 1rem; margin-left: .25rem; vertical-align: middle; background: var(--primary); animation: blink 1s steps(1) infinite; }
+  .online-dot { width: .55rem; height: .55rem; border-radius: 9999px; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); animation: pulse 2s infinite; }
+
+  .btn-neon {
+    background: linear-gradient(135deg, var(--neon-pink), oklch(0.6 0.25 320));
+    color: var(--primary-foreground);
+    box-shadow: 0 0 22px -4px var(--neon-pink), 0 8px 30px -10px var(--neon-pink);
+    transition: transform .15s, box-shadow .15s, filter .15s;
+  }
+  .btn-neon:not(:disabled):hover { transform: translateY(-2px); filter: brightness(1.12); box-shadow: 0 0 32px -2px var(--neon-pink), 0 12px 36px -8px var(--neon-pink); }
+
+  .chip { border: 1px solid var(--border); background: var(--secondary); color: var(--secondary-foreground); border-radius: var(--radius-md); padding: .4rem .75rem; font-family: var(--font-mono); font-size: .75rem; transition: border-color .15s, color .15s, box-shadow .15s; }
+  .chip:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 14px -4px var(--neon-cyan); }
+
+  .stat-chip {
+    display: flex; align-items: center; gap: .45rem;
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    background: color-mix(in oklab, var(--card) 65%, transparent);
+    padding: .4rem .8rem; font-family: var(--font-mono); font-size: .75rem; font-weight: 600;
+  }
+
+  .accent-bar-red { border-left: 3px solid var(--neon-pink); }
+  .accent-bar-green { border-left: 3px solid var(--neon-green); }
+  .accent-bar-yellow { border-left: 3px solid var(--neon-cyan); }
+
+  .toggle-track {
+    width: 2.75rem; height: 1.5rem; border-radius: 9999px;
+    background: var(--secondary); border: 1px solid var(--border);
+    position: relative; transition: background .2s, box-shadow .2s; flex-shrink: 0;
+  }
+  .toggle-track::after {
+    content: ""; position: absolute; top: 2px; left: 2px;
+    width: 1.1rem; height: 1.1rem; border-radius: 9999px;
+    background: var(--muted-foreground); transition: transform .2s, background .2s;
+  }
+  .toggle-track[data-on="true"] { background: color-mix(in oklab, var(--neon-pink) 35%, var(--secondary)); box-shadow: 0 0 14px -2px var(--neon-pink); }
+  .toggle-track[data-on="true"]::after { transform: translateX(1.25rem); background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+
+  .eq { display: flex; align-items: flex-end; gap: 3px; height: 1.4rem; }
+  .eq-bar { width: 4px; border-radius: 2px; background: var(--neon-green); box-shadow: 0 0 6px var(--neon-green); height: 30%; }
+  .eq-playing .eq-bar { animation: eq 0.9s ease-in-out infinite; }
+  .eq-playing .eq-bar:nth-child(2) { animation-delay: .15s; }
+  .eq-playing .eq-bar:nth-child(3) { animation-delay: .3s; }
+  .eq-playing .eq-bar:nth-child(4) { animation-delay: .45s; }
+  .eq-playing .eq-bar:nth-child(5) { animation-delay: .6s; }
+  @keyframes eq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
+
+  .audio-progress { height: .4rem; border-radius: 9999px; background: var(--secondary); overflow: hidden; }
+  .audio-progress > div { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan)); box-shadow: 0 0 10px var(--neon-green); transition: width .3s linear; }
+
+  .caret { display: inline-block; width: .5rem; height: 1rem; margin-left: .25rem; vertical-align: middle; background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  .typing-dot { width: .4rem; height: .4rem; border-radius: 9999px; background: var(--muted-foreground); animation: typing 1s infinite; }
+
+  .typing-dot { width: .4rem; height: .4rem; border-radius: 9999px; background: var(--neon-cyan); animation: typing 1s infinite; }
   @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
   .chat-md p { margin-bottom: .5rem; }
   .chat-md p:last-child { margin-bottom: 0; }
   .chat-md strong { color: var(--foreground); }
