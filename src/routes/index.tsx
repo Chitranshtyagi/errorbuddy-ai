@@ -53,8 +53,10 @@ const LEVELS = [
 
 function levelFor(xp: number) {
   let lvl = 0;
-  for (let i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i].min) lvl = i;
-  return { num: lvl + 1, name: LEVELS[lvl].name };
+  LEVELS.forEach((l, i) => {
+    if (xp >= l.min) lvl = i;
+  });
+  return { num: lvl + 1, name: LEVELS[lvl]?.name ?? "Syntax Noob" };
 }
 
 function dayKey(d: Date) {
